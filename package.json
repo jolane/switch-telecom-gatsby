@@ -4,7 +4,9 @@
     "version": "1.0.0",
     "author": "Jolane Synott <jolane@jolane.net>",
     "dependencies": {
+        "flickity": "^2.0.10",
         "gatsby": "^1.9.73",
+        "gatsby-cli": "^1.1.35",
         "gatsby-image": "1.0.18",
         "gatsby-link": "^1.6.22",
         "gatsby-plugin-react-helmet": "^1.0.8",
@@ -15,7 +17,6 @@
         "gatsby-transformer-remark": "1.7.19",
         "gatsby-transformer-sharp": "1.6.13",
         "prop-types": "15.6.0",
-        "react-flickity-component": "1.1.1",
         "react-google-maps": "9.2.2",
         "react-icons": "2.2.7",
         "react-scroll": "1.6.4",

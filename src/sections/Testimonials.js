@@ -1,6 +1,5 @@
 import React from "react"
 import styled from "styled-components"
-import Flickity from "react-flickity-component"
 import flickityStyles from "flickity/css/flickity.css"
 
 const items = [
@@ -29,26 +28,36 @@ const flickityOptions = {
   adaptiveHeight: true
 }
 
-const Testimonials = () => (
-  <Wrapper>
-    <Inner>
-      <Heading>Testimonials</Heading>
-    </Inner>
-    <Carousel options={flickityOptions}>
-      {items.map((item, index) => (
-        <Slide key={index}>
-          <Inner>
-            <Title>{item.title}</Title>
-            <Text dangerouslySetInnerHTML={item.text} />
-            <Author>
-              {item.author} - <span>{item.company}</span>
-            </Author>
-          </Inner>
-        </Slide>
-      ))}
-    </Carousel>
-  </Wrapper>
-)
+class Testimonials extends React.Component {
+  componentDidMount() {
+    const Flickity = require("flickity");
+    var flkty = new Flickity(this.input, {
+      pageDots: false,
+      adaptiveHeight: true
+    });
+  }
+  render() {
+    return <Wrapper>
+        <Inner>
+          <Heading>Testimonials</Heading>
+        </Inner>
+        <Carousel innerRef={comp => {
+            this.input = comp;
+          }}>
+          {items.map((item, index) => <Slide key={index}>
+              <Inner>
+                <Title>{item.title}</Title>
+                <Text dangerouslySetInnerHTML={item.text} />
+                <Author>
+                  {item.author} - <span>{item.company}</span>
+                </Author>
+              </Inner>
+            </Slide>)}
+        </Carousel>
+      </Wrapper>;
+  }
+}
+
 
 export default Testimonials
 
@@ -103,7 +112,7 @@ const Heading = styled.h3`
   margin: 0 0 0.75em 0;
 `
 
-const Carousel = styled(Flickity)`
+const Carousel = styled.div`
   width: 100%;
 `
 

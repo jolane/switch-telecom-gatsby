@@ -1,12 +1,8 @@
 import React from "react"
 import styled from "styled-components"
-import Flickity from "react-flickity-component"
 import flickityStyles from "flickity/css/flickity.css"
 
-const flickityOptions = {
-  wrapAround: true,
-  cellAlign: "left"
-}
+
 
 const values = [
   {
@@ -46,33 +42,44 @@ const values = [
   }
 ]
 
-const CompanyPurpose = () => (
-  <Wrapper>
-    <Inner>
-      <Heading>Company Purpose</Heading>
-      <p>
-        To bring integrity, clarity and innovative solutions for people in the
-        complex world of Telecommunications
-      </p>
-      <p>Our Values:</p>
-      <Carousel>
-        {values.map((v, index) => (
-          <Slide key={index}>
-            {console.log(v)}
-            <svg width="24" height="24" viewBox="0 0 24 24">
-              <path d={v.icon} />>
-            </svg>
-            <p>{v.text}</p>
-          </Slide>
-        ))}
-      </Carousel>
-    </Inner>
-  </Wrapper>
-)
+class CompanyPurpose extends React.Component {
+  componentDidMount() {
+    const Flickity = require("flickity");
+    var flkty = new Flickity(this.input, {
+      wrapAround: true,
+      cellAlign: "left"
+    });
+  }
+  render() {
+    return <Wrapper>
+        <Inner>
+          <Heading>Company Purpose</Heading>
+          <p>
+            To bring integrity, clarity and innovative solutions for people
+            in the complex world of Telecommunications
+          </p>
+          <p>Our Values:</p>
+          <Carousel innerRef={comp => {
+              this.input = comp;
+            }}>
+            {values.map((v, index) => <Slide key={index}>
+                {console.log(v)}
+                <svg width="24" height="24" viewBox="0 0 24 24">
+                  <path d={v.icon} />>
+                </svg>
+                <p>{v.text}</p>
+              </Slide>)}
+          </Carousel>
+        </Inner>
+      </Wrapper>;
+  }
+}
+
+
 
 export default CompanyPurpose
 
-const Carousel = styled(Flickity)`
+const Carousel = styled.div`
   width: 100%;
   margin-top: 4rem;
 

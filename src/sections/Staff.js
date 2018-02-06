@@ -1,37 +1,38 @@
 import React from "react"
 import Img from "gatsby-image"
 import styled, { injectGlobal } from "styled-components"
-import Flickity from "react-flickity-component"
 import flickityStyles from "flickity/css/flickity.css"
 
 import { colors, H3, H6, globalPadding } from "../util/vars"
 
-const flickityOptions = {
-  wrapAround: true,
-  cellAlign: "left"
+class Staff extends React.Component {
+  componentDidMount() {
+    const Flickity = require("flickity")
+    var flkty = new Flickity(this.input, {
+      wrapAround: true,
+      cellAlign: "left"
+    });
+  }
+
+
+  render() {
+    return <Wrapper>
+        <H3 color={colors.blue}>Our Leadership Team</H3>
+        <SubText color={colors.blue}>
+          Meet the people who are changing the face of telco. See who is
+          answering your calls, optimising your experience, and pushing the
+          carriers to get your business communicating.
+        </SubText>
+        <Carousel innerRef={comp => {
+            this.input = comp;
+          }}>
+          {this.props.data.edges.map((member, index) => <Slide key={index}>
+              <Image key={index} resolutions={member.node.profileImage.resolutions} />
+            </Slide>)}
+        </Carousel>
+      </Wrapper>;
+  }
 }
-
-const Staff = ({ data }) => (
-  <Wrapper>
-    <H3 color={colors.blue}>Our Leadership Team</H3>
-    <SubText color={colors.blue}>
-      Meet the people who are changing the face of telco. See who is answering
-      your calls, optimising your experience, and pushing the carriers to get
-      your business communicating.
-    </SubText>
-    <Carousel options={flickityOptions} disableImagesLoaded={true}>
-      {data.edges.map((member, index) => (
-        <Slide key={index}>
-          <Image
-            key={index}
-            resolutions={member.node.profileImage.resolutions}
-          />
-        </Slide>
-      ))}
-    </Carousel>
-  </Wrapper>
-)
-
 export default Staff
 
 injectGlobal`
@@ -58,7 +59,7 @@ const Wrapper = styled.section`
   }
 `
 
-const Carousel = styled(Flickity)`
+const Carousel = styled.div`
   width: 100%;
   margin-top: 4rem;
 `
