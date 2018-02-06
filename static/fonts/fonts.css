@@ -1,0 +1,59 @@
+@font-face {
+    font-family: "Gotham";
+    src: url("Gotham-Thin.eot");
+    /* IE9 Compat Modes */
+    src: url("Gotham-Thin.eot?#iefix") format("embedded-opentype"), url("Gotham-Thin.woff") format("woff"), url("Gotham-Thin.ttf") format("truetype"), url("Gotham-Thin.svg#2612f69d108fca39cb109c03ae310193") format("svg");
+    /* Legacy iOS */
+    font-style: normal;
+    font-weight: 100;
+}
+
+@font-face {
+    font-family: "Gotham";
+    src: url("Gotham-ExtraLight.eot");
+    /* IE9 Compat Modes */
+    src: url("Gotham-ExtraLight.eot?#iefix") format("embedded-opentype"), url("Gotham-ExtraLight.woff") format("woff"), url("Gotham-ExtraLight.ttf") format("truetype"), url("Gotham-ExtraLight.svg#0c4f2df0933d5b98e3f6d69baea7ffe6") format("svg");
+    /* Legacy iOS */
+    font-style: normal;
+    font-weight: 200;
+}
+
+@font-face {
+    font-family: "Gotham";
+    src: url("Gotham-Light.eot");
+    /* IE9 Compat Modes */
+    src: url("Gotham-Light.eot?#iefix") format("embedded-opentype"), url("Gotham-Light.woff") format("woff"), url("Gotham-Light.ttf") format("truetype"), url("Gotham-Light.svg#bf16822e282b4d885cff891f3a65335d") format("svg");
+    /* Legacy iOS */
+    font-style: normal;
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: "Gotham";
+    src: url("Gotham-Book.eot");
+    /* IE9 Compat Modes */
+    src: url("Gotham-Book.eot?#iefix") format("embedded-opentype"), url("Gotham-Book.woff") format("woff"), url("Gotham-Book.ttf") format("truetype"), url("Gotham-Book.svg#7510147900d23fa3ad697e74bf146ea2") format("svg");
+    /* Legacy iOS */
+    font-style: normal;
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: "Gotham";
+    src: url("Gotham-Medium.eot");
+    /* IE9 Compat Modes */
+    src: url("Gotham-Medium.eot?#iefix") format("embedded-opentype"), url("Gotham-Medium.woff") format("woff"), url("Gotham-Medium.ttf") format("truetype"), url("Gotham-Medium.svg#bdc473fae2f64b1c45b8886bcff81bae") format("svg");
+    /* Legacy iOS */
+    font-style: normal;
+    font-weight: 600;
+}
+
+@font-face {
+    font-family: "Gotham";
+    src: url("Gotham-Bold.eot");
+    /* IE9 Compat Modes */
+    src: url("Gotham-Bold.eot?#iefix") format("embedded-opentype"), url("Gotham-Bold.woff") format("woff"), url("Gotham-Bold.ttf") format("truetype"), url("Gotham-Bold.svg#6a327a217ddd10461b1acdc4d224fee0") format("svg");
+    /* Legacy iOS */
+    font-style: normal;
+    font-weight: 700;
+}
