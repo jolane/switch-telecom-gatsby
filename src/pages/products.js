@@ -1,6 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 import Img from "gatsby-image"
+import Link from "gatsby-link"
 
 import PageBanner from "../components/PageBanner"
 import General from "../sections/General"
@@ -9,37 +10,9 @@ import { colors } from "../util/vars"
 class ProductsPage extends React.Component {
   constructor() {
     super()
-    this.state = {
-      activeItem: null,
-      activeIndex: 0
-    }
-  }
-  componentWillMount() {
-    let activeIndex = this.props.data.products.edges.findIndex(
-      item => window.location.hash == `#${item.node.name}`
-    )
-    if (activeIndex === -1) {
-      activeIndex = 0
-    }
-
-    let activeItem = this.props.data.products.edges[activeIndex]
-    this.setState({
-      activeItem,
-      activeIndex
-    })
-  }
-
-  updateActive(index) {
-    let activeItem = this.props.data.products.edges[index]
-    let activeIndex = index
-    this.setState({
-      activeItem,
-      activeIndex
-    })
-    window.location.hash = activeItem.node.name
   }
   render() {
-    let { name, tagLine, description } = this.state.activeItem.node
+    let { name, tagLine, description } = this.props.data.products.edges[0].node;
     return (
       <div>
         <PageBanner
@@ -49,11 +22,7 @@ class ProductsPage extends React.Component {
         </PageBanner>
         <Tabs>
           {this.props.data.products.edges.map((product, index) => (
-            <Tab
-              key={index}
-              onClick={e => this.updateActive(index)}
-              active={index === this.state.activeIndex}
-            >
+            <Tab to={product.node.fields.slug}>
               {product.node.name}
             </Tab>
           ))}
@@ -94,6 +63,9 @@ export const query = graphql`
         node {
           name
           tagLine
+          fields {
+            slug
+          }
           description {
             childMarkdownRemark {
               html
@@ -114,7 +86,7 @@ const Tabs = styled.div`
   padding-top: 5rem;
 `
 
-const Tab = styled.div`
+const Tab = styled(Link)`
   width: 280px;
   padding: 3rem 0;
   text-align: center;
