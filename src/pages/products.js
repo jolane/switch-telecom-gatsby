@@ -10,9 +10,37 @@ import { colors } from "../util/vars"
 class ProductsPage extends React.Component {
   constructor() {
     super()
+    this.state = {
+      activeIndex: 0,
+      activeObj: null
+    }
+  }
+  componentWillMount() {
+    let activeIndex = this.props.data.products.edges.findIndex(
+      item => this.props.location.pathname == item.node.fields.slug
+    )
+    console.log(activeIndex)
+    if (activeIndex === -1) {
+      activeIndex = 0
+    }
+
+    let activeItem = this.props.data.products.edges[activeIndex]
+    this.setState({
+      activeItem,
+      activeIndex
+    })
+  }
+
+  updateActive(index) {
+    let activeItem = this.props.data.products.edges[index]
+    let activeIndex = index
+    this.setState({
+      activeItem,
+      activeIndex
+    })
   }
   render() {
-    let { name, tagLine, description } = this.props.data.products.edges[0].node;
+    let { name, tagLine, description } = this.state.activeItem.node
     return (
       <div>
         <PageBanner
@@ -22,7 +50,7 @@ class ProductsPage extends React.Component {
         </PageBanner>
         <Tabs>
           {this.props.data.products.edges.map((product, index) => (
-            <Tab to={product.node.fields.slug}>
+            <Tab to={product.node.fields.slug} key={index} active={index === this.state.activeIndex}>
               {product.node.name}
             </Tab>
           ))}
@@ -95,4 +123,5 @@ const Tab = styled(Link)`
   font-size: 2rem;
   font-weight: 700;
   color: ${colors.darkBlue};
+  text-decoration: none;
 `
