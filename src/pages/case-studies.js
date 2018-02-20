@@ -14,13 +14,9 @@ const CaseStudiesPages = ({ data }) => (
     <General>
       <h3>Our Wonderful Clients</h3>
       <p>
-        Exercitation voluptate velit et laboris consequat occaecat velit laborum
-        ipsum Lorem ea nisi ex. Est fugiat voluptate excepteur sit nulla fugiat
-        est ut. Magna consequat ex officia ullamco voluptate consectetur veniam
-        eiusmod voluptate. Nostrud mollit minim incididunt irure non id minim
-        officia dolor aliquip ullamco id. Consequat deserunt reprehenderit
-        eiusmod laborum consectetur tempor ipsum fugiat veniam et consequat
-        dolore aute. Sunt sunt proident id cillum.
+        Switch Telecom brings integrity, clarity and innovative solutions to
+        people in the complex world of telecommunications. We leverage technical
+        expertise alongside responsive customer support for unbeatable value.
       </p>
     </General>
     {data.caseStudies.edges.map((n, index) => (
@@ -31,7 +27,9 @@ const CaseStudiesPages = ({ data }) => (
             <VideoContainer>
               <div>
                 <Video
-                  src={`https://player.vimeo.com/video/${n.node.vimeoCode}?title=0&byline=0&portrait=0`}
+                  src={`https://player.vimeo.com/video/${
+                    n.node.vimeoCode
+                  }?title=0&byline=0&portrait=0`}
                   width="640"
                   height="360"
                   frameborder="0"
