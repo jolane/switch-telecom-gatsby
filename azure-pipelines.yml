@@ -19,3 +19,12 @@ steps:
     npm install
     npm run build
   displayName: 'npm install and build'
+
+- task: AzureRmWebAppDeployment@4
+  inputs:
+    ConnectionType: 'AzureRM'
+    azureSubscription: 'Pay-As-You-Go (3f1630de-5398-430f-b9d7-01eaae446cdf)'
+    appType: 'webAppLinux'
+    WebAppName: 'cra-test-jolane'
+    packageForLinux: '$(System.DefaultWorkingDirectory)/build/**/*.*'
+    RuntimeStack: 'NODE|10.1'
